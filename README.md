@@ -18,13 +18,81 @@ A Streamlit-based application for detecting and counting vehicles in predefined 
 ## Installation
 
 ### Local Setup
-1. **Clone the Repository**:
+### 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/<your-username>/Lane-Detection.git
    cd Lane-Detection
 
-2. **Create a Virtual Environment**:
-```bash
+### 2. **Create a Virtual Environment**:
+   ```bash
    python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   
+### 3. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+
+### 4. **Install FFmpeg**:
+   Ubuntu
+   ```bash
+   sudo apt update
+   sudo apt install ffmpeg   
+
+   macOS:
+   ```bash
+   brew install ffmpeg
+   Windows:
+   Download from FFmpeg Website and add to your system PATH.
+
+### 5. Download YOLOv8 Model
+
+The code uses `yolov8n.pt`. You can either:
+
+- Download it manually from the [Ultralytics YOLOv8 repository](https://github.com/ultralytics/ultralytics), **or**
+- Allow the `ultralytics` library to automatically download it the first time you run the application.
+
+### 6. Run the Application
+
+You can now run either of the Streamlit applications:
+
+#### Real-time Visualization (`streamlit-new.py`)
+
+```bash
+streamlit run streamlit-new.py
+
+### 7. Configure Lane Polygons (Optional)
+
+Lane regions are defined using polygon coordinates. These are **hardcoded** in both `process_video.py` and `streamlit-new.py` under the variable `lane_points`.
+
+To customize lanes for your specific video layout:
+
+1. Open either `process_video.py` or `streamlit-new.py`.
+2. Locate the `lane_points` definition.
+3. Modify the list of coordinates to match your lanes.
+
+Example format:
+
+```python
+lane_points = [
+    [(100, 300), (200, 300), (200, 500), (100, 500)],  # Lane 1
+    [(210, 300), (310, 300), (310, 500), (210, 500)],  # Lane 2
+    ...
+]
+
+### 8. Ensure Model Consistency
+
+Ensure that **all scripts use the same YOLOv8 model** (`yolov8n.pt`) to maintain consistent results across the application.
+
+By default:
+- `process_video.py` uses `yolov8n.pt`
+- `streamlit-new.py` may use `yolov5n.pt` (older version)
+
+#### ✅ Fix:
+
+Open `streamlit-new.py` and replace the model loading line with:
+
+```python
+from ultralytics import YOLO
+model = YOLO("yolov8n.pt")
+
 
