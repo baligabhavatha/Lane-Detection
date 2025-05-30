@@ -182,10 +182,10 @@ docker run -p 8595:8595 lane-detection
 
 ## 🧠 Training a Custom Model
 
-To improve accuracy or adapt to your specific use case (e.g., custom vehicle types, unique camera angles), you can train your own YOLOv8 model using labeled data.
+> **Why train a custom model?**  
+> While the default YOLOv8 model works well for general object detection, training your own model can significantly improve performance for specific environments, camera angles, vehicle types, or traffic conditions. This allows the model to better adapt to your unique use case and improve lane-wise counting accuracy.
 
 ---
-
 ### 🔧 Step 1: Prepare Your Dataset
 
 Organize your dataset using the YOLO directory structure:
