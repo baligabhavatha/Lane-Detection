@@ -33,6 +33,7 @@ A Streamlit-based application for detecting and counting vehicles in predefined 
    pip install -r requirements.txt
 ```
  4. **Install FFmpeg**:
+    
    Ubuntu
    ```bash
    sudo apt update
@@ -44,14 +45,14 @@ A Streamlit-based application for detecting and counting vehicles in predefined 
    Windows:
    Download from FFmpeg Website and add to your system PATH.
 ```
- 5. Download YOLOv8 Model
+ 5. **Download YOLOv8 Model**
 
 The code uses `yolov8n.pt`. You can either:
 
 - Download it manually from the [Ultralytics YOLOv8 repository](https://github.com/ultralytics/ultralytics), **or**
 - Allow the `ultralytics` library to automatically download it the first time you run the application.
 
-6. Run the Application
+6. **Run the Application**
 
 You can now run either of the Streamlit applications:
 
@@ -60,7 +61,7 @@ You can now run either of the Streamlit applications:
 ```bash
 streamlit run streamlit-new.py
 ```
-7. Configure Lane Polygons (Optional)
+7. **Configure Lane Polygons** (Optional)
 
 Lane regions are defined using polygon coordinates. These are **hardcoded** in both `process_video.py` and `streamlit-new.py` under the variable `lane_points`.
 
@@ -79,7 +80,7 @@ lane_points = [
     ...
 ]
 ```
-8. Ensure Model Consistency
+8. **Ensure Model Consistency**
 
 Ensure that **all scripts use the same YOLOv8 model** (`yolov8n.pt`) to maintain consistent results across the application.
 
