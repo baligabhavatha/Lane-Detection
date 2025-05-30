@@ -22,3 +22,9 @@ A Streamlit-based application for detecting and counting vehicles in predefined 
    ```bash
    git clone https://github.com/<your-username>/Lane-Detection.git
    cd Lane-Detection
+
+2. **Create a Virtual Environment**:
+```bash
+   python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
