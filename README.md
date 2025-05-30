@@ -37,13 +37,13 @@ A Streamlit-based application for detecting and counting vehicles in predefined 
    ```bash
    sudo apt update
    sudo apt install ffmpeg   
-
+```
    macOS:
    ```bash
    brew install ffmpeg
    Windows:
    Download from FFmpeg Website and add to your system PATH.
-
+```
  5. Download YOLOv8 Model
 
 The code uses `yolov8n.pt`. You can either:
