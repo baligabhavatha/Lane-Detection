@@ -257,9 +257,6 @@ Ensure your dataset is well-balanced and includes varied lighting, angles, and o
 
 You can monitor training logs and mAP scores inside the runs/ folder
 
-
-✅ Just paste this into your `README.md` under a `## Training` or `Advanced Usage` section.
-
 ---
 
 **a.** Want me to generate a sample `data.yaml` with multiple class names?  
