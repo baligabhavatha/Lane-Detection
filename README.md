@@ -113,3 +113,113 @@ import os
 if os.path.exists("temp_output.mp4"):
     os.remove("temp_output.mp4")
 ```
+10. Streamlit Limitations
+
+Some video formats may not preview properly within the Streamlit interface due to codec or format compatibility issues.
+
+#### Tips:
+
+- Use standard formats like `.mp4` with H.264 encoding for best compatibility.
+- If preview fails:
+  - Try re-encoding the video using FFmpeg:
+
+    ```bash
+    ffmpeg -i input.avi -vcodec libx264 -crf 23 output.mp4
+    ```
+
+  - Or download the processed video directly and view it locally.
+
+> ℹ️ This limitation is specific to Streamlit’s `st.video()` component and not a bug in the processing logic.
+
+
+11. Customize Processing Duration
+
+By default, the application only processes the **first 15 seconds** of any uploaded video to ensure faster performance and quick previews.
+
+#### To change this limit:
+
+1. Open `process_video.py`
+2. Locate the configuration variable:
+
+```python
+duration_sec = 15
+Modify it to your desired duration (in seconds), for example: duration_sec = 60
+
+⏱️ Note: Longer durations may increase processing time and memory usage significantly.
+---
+
+**a.** Want help turning `duration_sec` into a Streamlit slider or input field for dynamic control?  
+**b.** Should we add command-line argument support to control duration when running as a script?
+---
+
+12. Troubleshooting
+
+Common issues and recommended fixes:
+
+#### ✅ YOLO model not found or not downloading
+- Ensure `ultralytics` is installed correctly:
+  ```bash
+  pip install ultralytics==8.1.22
+
+---
+
+## 🐳 Optional: Docker Setup
+
+You can run the entire application in a Docker container for a consistent and portable environment.
+
+### 1. Build the Docker Image
+
+```bash
+docker build -t lane-detection .
+```
+### 2. Run rhe Docker container
+``` bash
+docker run -p 8595:8595 lane-detection
+```
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions to improve lane detection, tracking, UI/UX, or documentation.
+
+### How to Contribute
+
+1. **Fork** the repository
+2. **Create a branch** for your feature or bugfix:
+   ```bash
+   git checkout -b feature-name
+   ```
+3. **Push to your fork**
+```bash
+git push origin feature-name
+```
+4. **Open a Pull Request with a detailed description of your changes.**
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License**.
+
+You are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, under the following conditions:
+
+- You must include the original copyright
+- The license and permission notice must be included in all copies or substantial portions of the Software
+
+THE SOFTWARE IS PROVIDED **"AS IS"**, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+
+See the full [LICENSE](./LICENSE) file for details.
+
+
+---
+
+## 📝 Contributor Agreement
+
+By contributing to this repository, you agree that:
+
+1. You have authored the code or have permission to contribute it.
+2. You grant the project maintainers the right to use, modify, and distribute your contributions as part of this project under the MIT License.
+3. You understand your contributions will be publicly available under the same license as the project.
+
+> For larger contributions or feature changes, please consider opening an issue first to discuss your idea before submitting a pull request.
