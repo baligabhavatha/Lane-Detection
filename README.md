@@ -180,6 +180,94 @@ docker run -p 8595:8595 lane-detection
 
 ---
 
+## 🧠 Training a Custom Model
+
+To improve accuracy or adapt to your specific use case (e.g., custom vehicle types, unique camera angles), you can train your own YOLOv8 model using labeled data.
+
+---
+
+### 🔧 Step 1: Prepare Your Dataset
+
+Organize your dataset using the YOLO directory structure:
+
+dataset/
+├── images/
+│ ├── train/
+│ └── val/
+├── labels/
+│ ├── train/
+│ └── val/
+
+
+Each image must have a corresponding `.txt` file in `labels/`, with each line formatted as:
+
+<class_id> <x_center> <y_center> <width> <height>
+
+
+All coordinates must be **normalized** (values between 0 and 1 relative to image width and height).
+
+---
+
+### 🏷️ Step 2: Label Your Images
+
+Use one of the following tools to annotate your images in **YOLO format**:
+
+- [LabelImg](https://github.com/tzutalin/labelImg)
+- [makesense.ai](https://www.makesense.ai)
+- [Roboflow](https://roboflow.com) *(recommended for dataset management and format conversion)*
+
+> Export annotations in **YOLO** format after labeling.
+
+---
+
+### 📝 Step 3: Create a `data.yaml` File
+
+Create a file named `data.yaml` in your project root to define the dataset config:
+
+```yaml
+path: ./dataset
+train: images/train
+val: images/val
+
+nc: 1  # number of classes
+names: ['vehicle']  # replace with your actual class names
+```
+### 🧪 Step 4: Train with YOLOv8
+Install untralytics
+```bash
+pip install ultralytics
+yolo task=detect mode=train model=yolov8n.pt data=data.yaml epochs=50 imgsz=640
+
+```
+### 📂 Step 5: Retrieve Your Trained Model
+```bash
+runs/detect/train/weights/best.pt
+```
+### 🤖 Step 6: Integrate the Custom Model
+```bash
+from ultralytics import YOLO
+model = YOLO("runs/detect/train/weights/best.pt")
+```
+**📌 Notes**
+Use a GPU for faster training (NVIDIA with CUDA recommended)
+
+Google Colab offers free GPU instances
+
+Ensure your dataset is well-balanced and includes varied lighting, angles, and object types
+
+You can monitor training logs and mAP scores inside the runs/ folder
+
+
+✅ Just paste this into your `README.md` under a `## Training` or `Advanced Usage` section.
+
+---
+
+**a.** Want me to generate a sample `data.yaml` with multiple class names?  
+**b.** Need a `train_model.py` script pre-configured for local or Colab training?
+---
+
+---
+
 ## 🤝 Contributing
 
 We welcome contributions to improve lane detection, tracking, UI/UX, or documentation.
