@@ -147,11 +147,6 @@ duration_sec = 15
 Modify it to your desired duration (in seconds), for example: duration_sec = 60
 
 ⏱️ Note: Longer durations may increase processing time and memory usage significantly.
----
-
-**a.** Want help turning `duration_sec` into a Streamlit slider or input field for dynamic control?  
-**b.** Should we add command-line argument support to control duration when running as a script?
----
 
 12. **Troubleshooting**
 
@@ -256,12 +251,6 @@ Google Colab offers free GPU instances
 Ensure your dataset is well-balanced and includes varied lighting, angles, and object types
 
 You can monitor training logs and mAP scores inside the runs/ folder
-
----
-
-**a.** Want me to generate a sample `data.yaml` with multiple class names?  
-**b.** Need a `train_model.py` script pre-configured for local or Colab training?
----
 
 ---
 
