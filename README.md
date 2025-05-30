@@ -114,7 +114,7 @@ import os
 if os.path.exists("temp_output.mp4"):
     os.remove("temp_output.mp4")
 ```
-10. Streamlit Limitations
+10. **Streamlit Limitations**
 
 Some video formats may not preview properly within the Streamlit interface due to codec or format compatibility issues.
 
@@ -127,13 +127,12 @@ Some video formats may not preview properly within the Streamlit interface due t
     ```bash
     ffmpeg -i input.avi -vcodec libx264 -crf 23 output.mp4
     ```
-
   - Or download the processed video directly and view it locally.
 
 > ℹ️ This limitation is specific to Streamlit’s `st.video()` component and not a bug in the processing logic.
 
 
-11. Customize Processing Duration
+11. **Customize Processing Duration**
 
 By default, the application only processes the **first 15 seconds** of any uploaded video to ensure faster performance and quick previews.
 
@@ -144,6 +143,7 @@ By default, the application only processes the **first 15 seconds** of any uploa
 
 ```python
 duration_sec = 15
+```
 Modify it to your desired duration (in seconds), for example: duration_sec = 60
 
 ⏱️ Note: Longer durations may increase processing time and memory usage significantly.
@@ -153,7 +153,7 @@ Modify it to your desired duration (in seconds), for example: duration_sec = 60
 **b.** Should we add command-line argument support to control duration when running as a script?
 ---
 
-12. Troubleshooting
+12. **Troubleshooting**
 
 Common issues and recommended fixes:
 
