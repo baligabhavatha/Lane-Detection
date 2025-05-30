@@ -59,7 +59,7 @@ You can now run either of the Streamlit applications:
 
 ```bash
 streamlit run streamlit-new.py
-
+```
 7. Configure Lane Polygons (Optional)
 
 Lane regions are defined using polygon coordinates. These are **hardcoded** in both `process_video.py` and `streamlit-new.py` under the variable `lane_points`.
@@ -78,7 +78,7 @@ lane_points = [
     [(210, 300), (310, 300), (310, 500), (210, 500)],  # Lane 2
     ...
 ]
-
+```
 8. Ensure Model Consistency
 
 Ensure that **all scripts use the same YOLOv8 model** (`yolov8n.pt`) to maintain consistent results across the application.
@@ -95,4 +95,21 @@ Open `streamlit-new.py` and replace the model loading line with:
 from ultralytics import YOLO
 model = YOLO("yolov8n.pt")
 
+```
 
+### 9. Manage Temporary Files
+
+During video processing, the application generates temporary files such as `temp_output.mp4`.
+
+#### Recommendations:
+
+- **Disk Space**: Ensure you have enough disk space to handle temporary and output files.
+- **Auto-cleanup (Optional)**: You can manually or programmatically delete temporary files after processing to free up space.
+
+Example cleanup snippet (Python):
+
+```python
+import os
+if os.path.exists("temp_output.mp4"):
+    os.remove("temp_output.mp4")
+```
